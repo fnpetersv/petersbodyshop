@@ -163,4 +163,22 @@
 			}
 		});
 	}
+
+	// ----- Careers page: form submit -----
+	var careersForm = document.getElementById('careers-form');
+	if (careersForm) {
+		var careersError = document.getElementById('careers-error');
+		var careersSuccess = document.getElementById('careers-success');
+		careersForm.addEventListener('submit', function (e) {
+			if (!careersForm.action || careersForm.action === '' || careersForm.getAttribute('action') === '') {
+				e.preventDefault();
+				if (careersError) careersError.hidden = true;
+				if (careersSuccess) careersSuccess.hidden = false;
+				careersForm.reset();
+			} else {
+				if (careersError) careersError.hidden = true;
+				if (careersSuccess) careersSuccess.hidden = true;
+			}
+		});
+	}
 })();
