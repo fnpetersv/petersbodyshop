@@ -585,6 +585,270 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .footer-nav a:hover { opacity: 0.85; }
 
+/* ----- About page ----- */
+.about-hero {
+	position: relative;
+	min-height: 280px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	overflow: hidden;
+}
+.about-hero__bg {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.about-hero__overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	pointer-events: none;
+}
+.about-hero__inner {
+	position: relative;
+	z-index: 1;
+}
+.about-hero__title {
+	margin: 0;
+	font-family: var(--font-heading);
+	font-size: 2.5rem;
+	font-weight: 600;
+	color: var(--color-white);
+	line-height: 1.2;
+}
+
+.about-intro {
+	position: relative;
+	background-color: var(--color-white);
+}
+.about-intro__bg {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 0.06;
+	pointer-events: none;
+}
+.about-intro .container {
+	position: relative;
+	z-index: 1;
+}
+.about-intro__grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 48px;
+	align-items: center;
+}
+.about-intro__media {
+	border-radius: 4px;
+	overflow: hidden;
+}
+.about-intro__media img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+.about-intro__heading {
+	font-family: var(--font-heading);
+	font-size: 2rem;
+	font-weight: 500;
+	line-height: 1.3;
+	color: var(--color-text);
+	margin: 0 0 1rem;
+}
+.about-intro__heading .text-primary {
+	color: rgb(0, 123, 255);
+	font-family: 'Playfair Display', serif;
+	font-style: italic;
+	font-weight: 400;
+}
+.about-intro__text {
+	font-size: 1rem;
+	line-height: 1.75;
+	color: var(--color-text);
+	margin: 0;
+	max-width: 540px;
+}
+
+.about-faq__title {
+	font-family: var(--font-heading);
+	font-size: 1.75rem;
+	font-weight: 600;
+	color: var(--color-text);
+	margin: 0 0 1.5rem;
+}
+.about-faq__list {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+	overflow: hidden;
+}
+.about-faq__item {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.about-faq__item:last-child { border-bottom: none; }
+.about-faq__question {
+	font-family: var(--font-heading);
+	font-size: 1rem;
+	font-weight: 500;
+	color: var(--color-text);
+	padding: 1rem 1.25rem;
+	cursor: pointer;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	transition: background 0.2s ease;
+}
+.about-faq__question::-webkit-details-marker { display: none; }
+.about-faq__question::marker { content: none; }
+.about-faq__item[open] .about-faq__question {
+	background: rgba(0, 121, 170, 0.06);
+}
+.about-faq__question:hover {
+	background: rgba(0, 0, 0, 0.03);
+}
+.about-faq__answer {
+	padding: 0 1.25rem 1.25rem 1.25rem;
+	font-size: 0.9375rem;
+	line-height: 1.6;
+	color: var(--color-text);
+	margin: 0;
+	padding-top: 0;
+	padding-left: 1.25rem;
+}
+
+.testimonials__title {
+	font-family: var(--font-heading);
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: var(--color-text);
+	text-align: center;
+	margin: 0 0 2rem;
+}
+.testimonial-carousel {
+	position: relative;
+	max-width: 800px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.testimonial-carousel__track {
+	display: flex;
+	width: 400%;
+	max-width: none;
+	overflow: hidden;
+	border-radius: 8px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	transition: transform 0.4s ease;
+}
+.testimonial-card {
+	margin: 0;
+	flex: 0 0 25%;
+	width: 25%;
+	box-sizing: border-box;
+	background: var(--color-white);
+	border-radius: 8px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+.testimonial-card__quote {
+	font-size: 1rem;
+	line-height: 1.6;
+	color: var(--color-text);
+	padding: 1.5rem 1.5rem 1.25rem;
+	margin: 0;
+	flex: 1;
+}
+.testimonial-card__footer {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem 1.5rem;
+	background: rgb(0, 121, 170);
+	color: var(--color-white);
+	margin: 0;
+}
+.testimonial-card__photo {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	object-fit: cover;
+	flex-shrink: 0;
+}
+.testimonial-card__name {
+	font-family: var(--font-heading);
+	font-weight: 600;
+	font-size: 1.125rem;
+	font-style: normal;
+}
+.testimonial-carousel__nav {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	transform: translateY(-50%);
+	display: flex;
+	justify-content: space-between;
+	pointer-events: none;
+	padding: 0 8px;
+}
+.testimonial-carousel__btn {
+	pointer-events: auto;
+	width: 44px;
+	height: 44px;
+	border: none;
+	background: rgba(0, 121, 170, 0.9);
+	color: var(--color-white);
+	font-size: 1.5rem;
+	cursor: pointer;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+.testimonial-carousel__btn:hover {
+	background: rgb(0, 121, 170);
+	transform: scale(1.05);
+}
+.testimonial-carousel__btn--prev { margin-left: -8px; }
+.testimonial-carousel__btn--next { margin-right: -8px; }
+.testimonial-carousel__dots {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	margin: 1.25rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+.testimonial-carousel__dots li {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	transition: background 0.2s ease;
+}
+.testimonial-carousel__dots li.active {
+	background: rgb(0, 121, 170);
+}
+.testimonial-carousel__dots button {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: none;
+	background: none;
+	cursor: pointer;
+	padding: 0;
+}
+
 /* ----- Responsive ----- */
 @media (max-width: 992px) {
 	.cert-grid { grid-template-columns: repeat(2, 1fr); }
@@ -592,9 +856,17 @@ ul { list-style: none; margin: 0; padding: 0; }
 	.our-story__image-wrap { order: -1; }
 	.cta-inner { flex-direction: column; text-align: center; }
 	.cta-contact { justify-content: center; }
+	.about-intro__grid { grid-template-columns: 1fr; gap: 32px; }
+	.about-intro__media { order: -1; }
 }
 
 @media (max-width: 768px) {
+	.about-hero { min-height: 220px; }
+	.about-hero__title { font-size: 1.75rem; }
+	.about-intro__heading { font-size: 1.5rem; }
+	.about-faq__question,
+	.about-faq__answer { padding-left: 1rem; padding-right: 1rem; }
+	.testimonial-carousel__btn { width: 38px; height: 38px; font-size: 1.25rem; }
 	.nav-toggle { display: flex; }
 	.nav {
 		position: fixed;
