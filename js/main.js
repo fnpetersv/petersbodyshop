@@ -145,4 +145,22 @@
 		if (next) next.addEventListener('click', function () { setSlide(idx + 1); });
 		setSlide(0);
 	}
+
+	// ----- Estimates page: form submit (show success; set form action for real backend) -----
+	var estimateForm = document.getElementById('estimate-form');
+	if (estimateForm) {
+		var estimateError = document.getElementById('estimate-error');
+		var estimateSuccess = document.getElementById('estimate-success');
+		estimateForm.addEventListener('submit', function (e) {
+			if (!estimateForm.action || estimateForm.action === '' || estimateForm.getAttribute('action') === '') {
+				e.preventDefault();
+				if (estimateError) estimateError.hidden = true;
+				if (estimateSuccess) estimateSuccess.hidden = false;
+				estimateForm.reset();
+			} else {
+				if (estimateError) estimateError.hidden = true;
+				if (estimateSuccess) estimateSuccess.hidden = true;
+			}
+		});
+	}
 })();

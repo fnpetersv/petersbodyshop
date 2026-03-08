@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Get a free estimate from Peters Body Shop. Schedule online or stop by during business hours.">
+	<title>Peters Body Shop - Free Estimates</title>
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+</head>
+<body>
+	<div class="page-wrapper">
+		<header class="site-header" id="header">
+			<div class="header-inner">
+				<a href="index.html" class="logo">
+					<img src="thislogo.webp" width="180" height="60" alt="Peters Body Shop">
+				</a>
+				<div class="header-right">
+					<button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+						<span></span><span></span><span></span>
+					</button>
+					<nav class="nav" id="nav">
+						<ul class="nav-list">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li class="active"><a href="estimates.html">Estimates</a></li>
+							<li><a href="contact.html">Contact</a></li>
+							<li><a href="careers.html">Careers</a></li>
+						</ul>
+						<div class="header-contact">
+							<div class="header-phone">260-747-7780</div>
+							<div class="header-hours">7:30am - 5:30pm</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<section class="about-hero" aria-labelledby="estimates-title">
+				<div class="about-hero__bg" style="background-image: url('images/background/CarEstimate.jpg');"></div>
+				<div class="about-hero__overlay"></div>
+				<div class="container about-hero__inner">
+					<h1 id="estimates-title" class="about-hero__title">Schedule an Estimate!</h1>
+				</div>
+			</section>
+
+			<section class="estimate-section section" aria-labelledby="estimate-heading">
+				<div class="container">
+					<div class="estimate-grid">
+						<div class="estimate-intro">
+							<h2 id="estimate-heading" class="estimate-intro__title">Quick and Easy<br><span class="text-primary">FREE Estimates</span></h2>
+							<p class="estimate-intro__text">We offer three options for getting a FREE estimate:</p>
+							<ul class="estimate-intro__list">
+								<li>Stop by during business hours and someone will provide a quick and easy estimate.</li>
+								<li>Complete the form and someone from Peters Body Shop will contact you with an estimate.</li>
+								<li>Complete the form with the best time for you to come in and we will add you to the schedule.</li>
+							</ul>
+						</div>
+						<div class="estimate-form-wrap">
+							<form id="estimate-form" class="estimate-form" method="post" action="" novalidate>
+								<div class="estimate-form__group">
+									<label for="estimate-name">Name</label>
+									<input type="text" id="estimate-name" name="name" class="estimate-form__input" placeholder="Enter name" required autocomplete="name">
+								</div>
+								<div class="estimate-form__group">
+									<label for="estimate-email">Email</label>
+									<input type="email" id="estimate-email" name="email" class="estimate-form__input" placeholder="Enter email" required autocomplete="email">
+								</div>
+								<div class="estimate-form__group">
+									<label for="estimate-vin">VIN</label>
+									<input type="text" id="estimate-vin" name="vin" class="estimate-form__input" placeholder="Enter vehicle VIN" autocomplete="off">
+								</div>
+								<div class="estimate-form__group">
+									<label for="estimate-message">When can you come in?</label>
+									<textarea id="estimate-message" name="message" class="estimate-form__input estimate-form__textarea" rows="3" placeholder="Let us know what day and time work best for you"></textarea>
+								</div>
+								<div class="estimate-form__row">
+									<div class="estimate-form__group">
+										<label for="estimate-file1">Upload photo (optional)</label>
+										<input type="file" id="estimate-file1" name="image-1" class="estimate-form__file" accept="image/*,.pdf">
+									</div>
+									<div class="estimate-form__group">
+										<label for="estimate-file2">Upload photo (optional)</label>
+										<input type="file" id="estimate-file2" name="image-2" class="estimate-form__file" accept="image/*,.pdf">
+									</div>
+								</div>
+								<div class="estimate-form__row">
+									<div class="estimate-form__group">
+										<label for="estimate-file3">Upload photo (optional)</label>
+										<input type="file" id="estimate-file3" name="image-3" class="estimate-form__file" accept="image/*,.pdf">
+									</div>
+									<div class="estimate-form__group">
+										<label for="estimate-file4">Upload photo (optional)</label>
+										<input type="file" id="estimate-file4" name="image-4" class="estimate-form__file" accept="image/*,.pdf">
+									</div>
+								</div>
+								<p class="estimate-form__hint">File uploads are optional. Accepted: JPG, PNG, GIF, PDF. Max 5MB each.</p>
+								<div class="estimate-form__group">
+									<button type="submit" class="btn btn-primary estimate-form__submit">Submit</button>
+								</div>
+							</form>
+							<div id="estimate-error" class="estimate-message estimate-message--error" role="alert" hidden>
+								<h3>Error</h3>
+								<p>Sorry, there was an error sending your form. Please try again or call 260-747-7780.</p>
+							</div>
+							<div id="estimate-success" class="estimate-message estimate-message--success" role="status" hidden>
+								<h2>Success! Your estimate request was sent.</h2>
+								<p>Thank you for your interest. We will contact you soon to schedule your estimate.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="footer-inner">
+				<div class="container">
+					<div class="footer-row">
+						<div class="footer-logo">
+							<img src="thislogo.webp" width="100" height="155" alt="Peters Body Shop">
+						</div>
+						<nav class="footer-nav">
+							<a href="index.html">Home</a>
+							<a href="about.html">About</a>
+							<a href="estimates.html">Estimates</a>
+							<a href="contact.html">Contact</a>
+							<a href="careers.html">Careers</a>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="js/main.js" defer></script>
+</body>
+</html>
