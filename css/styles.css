@@ -642,7 +642,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 .about-intro {
 	position: relative;
-	background-color: var(--color-white);
+	background-color: transparent;
 }
 .about-intro__bg {
 	position: absolute;
@@ -650,7 +650,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	opacity: 0.06;
+	opacity: 0.9;
 	pointer-events: none;
 }
 .about-intro .container {
