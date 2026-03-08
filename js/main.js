@@ -84,6 +84,21 @@
 		goTo(0);
 	}
 
+	// ----- About page: FAQ accordion (only one open at a time) -----
+	var faqList = document.querySelector('.about-faq__list');
+	if (faqList) {
+		var faqItems = faqList.querySelectorAll('.about-faq__item');
+		faqItems.forEach(function (details) {
+			details.addEventListener('toggle', function () {
+				if (details.open) {
+					faqItems.forEach(function (other) {
+						if (other !== details) other.removeAttribute('open');
+					});
+				}
+			});
+		});
+	}
+
 	// ----- About page: testimonial carousel -----
 	var carousel = document.querySelector('[data-testimonial-carousel]');
 	if (carousel) {
