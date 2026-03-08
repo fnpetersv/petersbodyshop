@@ -736,16 +736,19 @@ ul { list-style: none; margin: 0; padding: 0; }
 	position: relative;
 	max-width: 800px;
 	margin: 0 auto;
+	overflow: visible;
+}
+.testimonial-carousel__viewport {
 	overflow: hidden;
+	border-radius: 8px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 .testimonial-carousel__track {
 	display: flex;
 	width: 400%;
 	max-width: none;
-	overflow: hidden;
-	border-radius: 8px;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 	transition: transform 0.4s ease;
+	border-radius: 8px;
 }
 /* Slider: one card per slide */
 .testimonial-carousel__track .item.testimonial-card {
@@ -839,13 +842,13 @@ ul { list-style: none; margin: 0; padding: 0; }
 .testimonial-carousel__nav {
 	position: absolute;
 	top: 50%;
-	left: 0;
-	right: 0;
+	left: -56px;
+	right: -56px;
 	transform: translateY(-50%);
 	display: flex;
 	justify-content: space-between;
 	pointer-events: none;
-	padding: 0 8px;
+	padding: 0;
 }
 .testimonial-carousel__btn {
 	pointer-events: auto;
@@ -866,8 +869,8 @@ ul { list-style: none; margin: 0; padding: 0; }
 	background: rgb(0, 121, 170);
 	transform: scale(1.05);
 }
-.testimonial-carousel__btn--prev { margin-left: -8px; }
-.testimonial-carousel__btn--next { margin-right: -8px; }
+.testimonial-carousel__btn--prev { margin-left: 0; }
+.testimonial-carousel__btn--next { margin-right: 0; }
 .testimonial-carousel__dots {
 	display: flex;
 	justify-content: center;
@@ -914,6 +917,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 	.about-intro__heading { font-size: 1.5rem; }
 	.about-faq__question,
 	.about-faq__answer { padding-left: 1rem; padding-right: 1rem; }
+	.testimonial-carousel__nav { left: -44px; right: -44px; }
 	.testimonial-carousel__btn { width: 38px; height: 38px; font-size: 1.25rem; }
 	.nav-toggle { display: flex; }
 	.nav {
