@@ -834,13 +834,13 @@ ul { list-style: none; margin: 0; padding: 0; }
 	color: #2896D8;
 	line-height: 1;
 }
-/* Blue footer bar (original testimonial-detail) */
+/* Blue footer bar (original testimonial-detail) - matches header nav #006699 */
 .testimonial-detail.bg-primary {
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background: #0d6efd;
+	background: #006699;
 	color: var(--color-white);
 	padding: 25px 90px 20px 20px; /* extra right padding for circle */
 	border-radius: 0 0 6px 6px;
