@@ -181,4 +181,22 @@
 			}
 		});
 	}
+
+	// ----- Contact page: form submit -----
+	var contactForm = document.getElementById('contact-form');
+	if (contactForm) {
+		var contactError = document.getElementById('contact-error');
+		var contactSuccess = document.getElementById('contact-success');
+		contactForm.addEventListener('submit', function (e) {
+			if (!contactForm.action || contactForm.action === '' || contactForm.getAttribute('action') === '') {
+				e.preventDefault();
+				if (contactError) contactError.hidden = true;
+				if (contactSuccess) contactSuccess.hidden = false;
+				contactForm.reset();
+			} else {
+				if (contactError) contactError.hidden = true;
+				if (contactSuccess) contactSuccess.hidden = true;
+			}
+		});
+	}
 })();
