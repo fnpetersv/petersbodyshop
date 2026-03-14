@@ -175,21 +175,42 @@
 		setSlide(0);
 	}
 
-	// ----- Estimates page: form submit (show success; set form action for real backend) -----
+	// ----- Estimates page: form submit (normal POST to FormSubmit.co – supports file uploads, free) -----
 	var estimateForm = document.getElementById('estimate-form');
 	if (estimateForm) {
 		var estimateError = document.getElementById('estimate-error');
 		var estimateSuccess = document.getElementById('estimate-success');
+		var formAction = (estimateForm.action || '').trim();
+		var isFormSubmit = formAction.indexOf('formsubmit.co') !== -1;
+		var isPlaceholder = !formAction || formAction === '';
+
+		// Set _next so FormSubmit redirects back here after submit; use current page + ?submitted=1
+		if (isFormSubmit && typeof window !== 'undefined' && window.location) {
+			var nextUrl = window.location.href.split('?')[0] + '?submitted=1';
+			var nextInput = document.createElement('input');
+			nextInput.type = 'hidden';
+			nextInput.name = '_next';
+			nextInput.value = nextUrl;
+			estimateForm.appendChild(nextInput);
+		}
+
+		// If URL has ?submitted=1 (redirect back after submit), show success message
+		if (typeof window !== 'undefined' && window.location && window.location.search.indexOf('submitted=1') !== -1) {
+			if (estimateError) estimateError.hidden = true;
+			if (estimateSuccess) estimateSuccess.hidden = false;
+			if (window.history && window.history.replaceState) {
+				window.history.replaceState({}, '', window.location.pathname);
+			}
+		}
+
 		estimateForm.addEventListener('submit', function (e) {
-			if (!estimateForm.action || estimateForm.action === '' || estimateForm.getAttribute('action') === '') {
+			if (isPlaceholder) {
 				e.preventDefault();
 				if (estimateError) estimateError.hidden = true;
 				if (estimateSuccess) estimateSuccess.hidden = false;
 				estimateForm.reset();
-			} else {
-				if (estimateError) estimateError.hidden = true;
-				if (estimateSuccess) estimateSuccess.hidden = true;
 			}
+			// When FormSubmit URL is set: form submits normally; submissions (including files) go to your email.
 		});
 	}
 

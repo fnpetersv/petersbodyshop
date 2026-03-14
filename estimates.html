@@ -69,7 +69,9 @@
 							</ul>
 						</div>
 						<div class="estimate-form-wrap">
-							<form id="estimate-form" class="estimate-form" method="post" action="" novalidate>
+							<!-- FormSubmit.co: free, supports file uploads. Replace the email below with yours, then go to https://formsubmit.co and enter that email to activate (you’ll get a confirmation link). -->
+							<form id="estimate-form" class="estimate-form" method="post" action="https://formsubmit.co/nellyp7@aol.com" enctype="multipart/form-data" novalidate>
+								<input type="hidden" name="_subject" value="New estimate request - Peters Body Shop">
 								<div class="estimate-form__group">
 									<label for="estimate-name">Name</label>
 									<input type="text" id="estimate-name" name="name" class="estimate-form__input" placeholder="Enter name" required autocomplete="name">
@@ -88,25 +90,25 @@
 								</div>
 								<div class="estimate-form__row">
 									<div class="estimate-form__group">
-										<label for="estimate-file1">Upload photo (optional)</label>
-										<input type="file" id="estimate-file1" name="image-1" class="estimate-form__file" accept="image/*,.pdf">
+										<label for="estimate-file1">Photo or document (optional)</label>
+										<input type="file" id="estimate-file1" name="image-1" class="estimate-form__file" accept="image/*,.pdf,.doc,.docx">
 									</div>
 									<div class="estimate-form__group">
-										<label for="estimate-file2">Upload photo (optional)</label>
-										<input type="file" id="estimate-file2" name="image-2" class="estimate-form__file" accept="image/*,.pdf">
+										<label for="estimate-file2">Photo or document (optional)</label>
+										<input type="file" id="estimate-file2" name="image-2" class="estimate-form__file" accept="image/*,.pdf,.doc,.docx">
 									</div>
 								</div>
 								<div class="estimate-form__row">
 									<div class="estimate-form__group">
-										<label for="estimate-file3">Upload photo (optional)</label>
-										<input type="file" id="estimate-file3" name="image-3" class="estimate-form__file" accept="image/*,.pdf">
+										<label for="estimate-file3">Photo or document (optional)</label>
+										<input type="file" id="estimate-file3" name="image-3" class="estimate-form__file" accept="image/*,.pdf,.doc,.docx">
 									</div>
 									<div class="estimate-form__group">
-										<label for="estimate-file4">Upload photo (optional)</label>
-										<input type="file" id="estimate-file4" name="image-4" class="estimate-form__file" accept="image/*,.pdf">
+										<label for="estimate-file4">Photo or document (optional)</label>
+										<input type="file" id="estimate-file4" name="image-4" class="estimate-form__file" accept="image/*,.pdf,.doc,.docx">
 									</div>
 								</div>
-								<p class="estimate-form__hint">File uploads are optional. Accepted: JPG, PNG, GIF, PDF. Max 5MB each.</p>
+								<p class="estimate-form__hint">File uploads are optional. Accepted: images (JPG, PNG, GIF, etc.), PDF, Word (.doc, .docx). Max 10MB total for all files.</p>
 								<div class="estimate-form__group">
 									<button type="submit" class="btn btn-primary estimate-form__submit">Submit</button>
 								</div>
