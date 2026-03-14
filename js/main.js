@@ -17,11 +17,13 @@
 	var navToggle = document.querySelector('.nav-toggle');
 	var nav = document.getElementById('nav');
 	var headerRight = document.querySelector('.header-right');
+	var navOverlay = document.getElementById('nav-overlay');
 	function closeNav() {
 		nav.classList.remove('is-open');
 		navToggle && navToggle.setAttribute('aria-expanded', 'false');
 		header && header.classList.remove('menu-open');
 		document.body.style.overflow = '';
+		if (navOverlay) navOverlay.setAttribute('aria-hidden', 'true');
 		if (nav.classList.contains('nav-portal') && headerRight) {
 			headerRight.appendChild(nav);
 			nav.classList.remove('nav-portal');
@@ -33,6 +35,7 @@
 			navToggle.setAttribute('aria-expanded', open);
 			header && header.classList.toggle('menu-open', open);
 			document.body.style.overflow = open ? 'hidden' : '';
+			if (navOverlay) navOverlay.setAttribute('aria-hidden', !open);
 			if (open && headerRight && window.innerWidth <= 768) {
 				document.body.appendChild(nav);
 				nav.classList.add('nav-portal');
@@ -48,6 +51,11 @@
 		var navClose = nav.querySelector('.nav-close');
 		if (navClose) {
 			navClose.addEventListener('click', function () {
+				closeNav();
+			});
+		}
+		if (navOverlay) {
+			navOverlay.addEventListener('click', function () {
 				closeNav();
 			});
 		}
