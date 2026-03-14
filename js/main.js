@@ -175,53 +175,30 @@
 		setSlide(0);
 	}
 
-	// ----- Estimates page: form submit via API (photos + email) -----
+	// ----- Estimates page: form submit (FormSubmit.co – redirect back with ?submitted=1) -----
 	var estimateForm = document.getElementById('estimate-form');
 	if (estimateForm) {
 		var estimateError = document.getElementById('estimate-error');
 		var estimateSuccess = document.getElementById('estimate-success');
-		var apiBase = (estimateForm.getAttribute('data-api-base') || '').trim().replace(/\/$/, '');
-		var apiPath = (estimateForm.getAttribute('data-api-url') || '/api/send-estimate').trim();
-		var apiUrl = apiBase ? (apiBase + '/' + apiPath.replace(/^\//, '')) : apiPath;
-		var submitBtn = estimateForm.querySelector('.estimate-form__submit');
+		var formAction = (estimateForm.action || '').trim();
+		var isFormSubmit = formAction.indexOf('formsubmit.co') !== -1;
 
-		estimateForm.addEventListener('submit', function (e) {
-			e.preventDefault();
+		if (isFormSubmit && window.location) {
+			var nextUrl = window.location.href.split('?')[0] + '?submitted=1';
+			var nextInput = document.createElement('input');
+			nextInput.type = 'hidden';
+			nextInput.name = '_next';
+			nextInput.value = nextUrl;
+			estimateForm.appendChild(nextInput);
+		}
+
+		if (window.location && window.location.search.indexOf('submitted=1') !== -1) {
 			if (estimateError) estimateError.hidden = true;
-			if (estimateSuccess) estimateSuccess.hidden = true;
-			if (submitBtn) {
-				submitBtn.disabled = true;
-				submitBtn.textContent = 'Sending…';
+			if (estimateSuccess) estimateSuccess.hidden = false;
+			if (window.history && window.history.replaceState) {
+				window.history.replaceState({}, '', window.location.pathname);
 			}
-			var formData = new FormData(estimateForm);
-			fetch(apiUrl, { method: 'POST', body: formData })
-				.then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-				.then(function (result) {
-					if (result.ok) {
-						if (estimateSuccess) estimateSuccess.hidden = false;
-						estimateForm.reset();
-					} else {
-						if (estimateError) {
-							estimateError.hidden = false;
-							var p = estimateError.querySelector('p');
-							if (p) p.textContent = (result.data && result.data.error) ? result.data.error : 'Sorry, there was an error sending your form. Please try again or call 260-747-7780.';
-						}
-					}
-				})
-				.catch(function () {
-					if (estimateError) {
-						estimateError.hidden = false;
-						var p = estimateError.querySelector('p');
-						if (p) p.textContent = 'Sorry, there was an error sending your form. Please try again or call 260-747-7780.';
-					}
-				})
-				.finally(function () {
-					if (submitBtn) {
-						submitBtn.disabled = false;
-						submitBtn.textContent = 'Submit';
-					}
-				});
-		});
+		}
 	}
 
 	// ----- Careers page: form submit -----
@@ -242,59 +219,29 @@
 		});
 	}
 
-	// ----- Contact page: form submit via API -----
+	// ----- Contact page: form submit (FormSubmit.co – redirect back with ?submitted=1) -----
 	var contactForm = document.getElementById('contact-form');
 	if (contactForm) {
 		var contactError = document.getElementById('contact-error');
 		var contactSuccess = document.getElementById('contact-success');
-		var apiBase = (contactForm.getAttribute('data-api-base') || '').trim().replace(/\/$/, '');
-		var apiPath = (contactForm.getAttribute('data-api-url') || '/api/send-contact').trim();
-		var apiUrl = apiBase ? (apiBase + '/' + apiPath.replace(/^\//, '')) : apiPath;
-		var submitBtn = contactForm.querySelector('.estimate-form__submit');
-		contactForm.addEventListener('submit', function (e) {
-			e.preventDefault();
+		var formAction = (contactForm.action || '').trim();
+		var isFormSubmit = formAction.indexOf('formsubmit.co') !== -1;
+
+		if (isFormSubmit && window.location) {
+			var nextUrl = window.location.href.split('?')[0] + '?submitted=1';
+			var nextInput = document.createElement('input');
+			nextInput.type = 'hidden';
+			nextInput.name = '_next';
+			nextInput.value = nextUrl;
+			contactForm.appendChild(nextInput);
+		}
+
+		if (window.location && window.location.search.indexOf('submitted=1') !== -1) {
 			if (contactError) contactError.hidden = true;
-			if (contactSuccess) contactSuccess.hidden = true;
-			if (submitBtn) {
-				submitBtn.disabled = true;
-				submitBtn.textContent = 'Sending…';
+			if (contactSuccess) contactSuccess.hidden = false;
+			if (window.history && window.history.replaceState) {
+				window.history.replaceState({}, '', window.location.pathname);
 			}
-			var body = JSON.stringify({
-				name: (contactForm.querySelector('[name="name"]') || {}).value || '',
-				email: (contactForm.querySelector('[name="email"]') || {}).value || '',
-				message: (contactForm.querySelector('[name="message"]') || {}).value || ''
-			});
-			fetch(apiUrl, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: body
-			})
-				.then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-				.then(function (result) {
-					if (result.ok) {
-						if (contactSuccess) contactSuccess.hidden = false;
-						contactForm.reset();
-					} else {
-						if (contactError) {
-							contactError.hidden = false;
-							var p = contactError.querySelector('p');
-							if (p) p.textContent = (result.data && result.data.error) ? result.data.error : 'Sorry, there was an error. Please try again or call 260-747-7780.';
-						}
-					}
-				})
-				.catch(function () {
-					if (contactError) {
-						contactError.hidden = false;
-						var p = contactError.querySelector('p');
-						if (p) p.textContent = 'Sorry, there was an error. Please try again or call 260-747-7780.';
-					}
-				})
-				.finally(function () {
-					if (submitBtn) {
-						submitBtn.disabled = false;
-						submitBtn.textContent = 'Submit';
-					}
-				});
-		});
+		}
 	}
 })();
