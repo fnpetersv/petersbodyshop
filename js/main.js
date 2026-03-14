@@ -175,23 +175,15 @@
 		setSlide(0);
 	}
 
-	// ----- Estimates page: form submit (FormSubmit.co – redirect back with ?submitted=1) -----
+	// ----- Estimates page: FormSubmit.co – set redirect URL and show success when returning -----
 	var estimateForm = document.getElementById('estimate-form');
 	if (estimateForm) {
 		var estimateError = document.getElementById('estimate-error');
 		var estimateSuccess = document.getElementById('estimate-success');
-		var formAction = (estimateForm.action || '').trim();
-		var isFormSubmit = formAction.indexOf('formsubmit.co') !== -1;
-
-		if (isFormSubmit && window.location) {
-			var nextUrl = window.location.href.split('?')[0] + '?submitted=1';
-			var nextInput = document.createElement('input');
-			nextInput.type = 'hidden';
-			nextInput.name = '_next';
-			nextInput.value = nextUrl;
-			estimateForm.appendChild(nextInput);
+		var nextInput = document.getElementById('estimate-form-next');
+		if (nextInput && window.location) {
+			nextInput.value = window.location.href.split('?')[0] + '?submitted=1';
 		}
-
 		if (window.location && window.location.search.indexOf('submitted=1') !== -1) {
 			if (estimateError) estimateError.hidden = true;
 			if (estimateSuccess) estimateSuccess.hidden = false;
@@ -219,23 +211,15 @@
 		});
 	}
 
-	// ----- Contact page: form submit (FormSubmit.co – redirect back with ?submitted=1) -----
+	// ----- Contact page: FormSubmit.co – set redirect URL and show success when returning -----
 	var contactForm = document.getElementById('contact-form');
 	if (contactForm) {
 		var contactError = document.getElementById('contact-error');
 		var contactSuccess = document.getElementById('contact-success');
-		var formAction = (contactForm.action || '').trim();
-		var isFormSubmit = formAction.indexOf('formsubmit.co') !== -1;
-
-		if (isFormSubmit && window.location) {
-			var nextUrl = window.location.href.split('?')[0] + '?submitted=1';
-			var nextInput = document.createElement('input');
-			nextInput.type = 'hidden';
-			nextInput.name = '_next';
-			nextInput.value = nextUrl;
-			contactForm.appendChild(nextInput);
+		var nextInput = document.getElementById('contact-form-next');
+		if (nextInput && window.location) {
+			nextInput.value = window.location.href.split('?')[0] + '?submitted=1';
 		}
-
 		if (window.location && window.location.search.indexOf('submitted=1') !== -1) {
 			if (contactError) contactError.hidden = true;
 			if (contactSuccess) contactSuccess.hidden = false;
