@@ -1,0 +1,9 @@
+{
+  "name": "petersbodyshop",
+  "version": "1.0.0",
+  "description": "Peters Body Shop website with photo submission backend",
+  "private": true,
+  "dependencies": {
+    "resend": "^4.0.0"
+  }
+}

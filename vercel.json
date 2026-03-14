@@ -1,0 +1,6 @@
+{
+  "functions": {
+    "api/send-estimate.js": { "maxDuration": 25 },
+    "api/send-contact.js": { "maxDuration": 10 }
+  }
+}
