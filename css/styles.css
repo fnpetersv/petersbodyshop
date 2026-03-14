@@ -1341,6 +1341,11 @@ ul { list-style: none; margin: 0; padding: 0; }
 	.contact-info-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Close button in mobile nav – hidden on desktop */
+.nav-close {
+	display: none;
+}
+
 @media (max-width: 768px) {
 	.about-hero { min-height: 220px; }
 	.about-hero__title { font-size: 1.75rem; }
@@ -1367,8 +1372,43 @@ ul { list-style: none; margin: 0; padding: 0; }
 		transition: transform 0.35s ease;
 		box-shadow: -6px 0 24px rgba(0, 0, 0, 0.12);
 		overflow-y: auto;
+		z-index: 101;
 	}
-	.nav.is-open { transform: translateX(0); }
+	.nav.is-open {
+		transform: translateX(0);
+	}
+	/* Nav moved to body when open – above everything */
+	body .nav-portal.nav {
+		z-index: 100001;
+	}
+	/* Close button inside nav (visible when menu covers everything) */
+	.nav-close {
+		display: flex;
+		position: absolute;
+		top: 18px;
+		right: 18px;
+		width: 44px;
+		height: 44px;
+		padding: 0;
+		border: none;
+		background: none;
+		cursor: pointer;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 6px;
+		z-index: 1;
+	}
+	.nav-close span {
+		display: block;
+		width: 24px;
+		height: 2px;
+		background: var(--color-text);
+		transition: transform 0.3s ease, opacity 0.2s ease;
+	}
+	.nav-close span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+	.nav-close span:nth-child(2) { opacity: 0; }
+	.nav-close span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 	.nav-list {
 		flex-direction: column;
 		align-items: stretch;

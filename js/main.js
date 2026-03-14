@@ -13,23 +13,44 @@
 	}
 
 	// ----- Mobile nav toggle -----
+	// When menu opens, move nav to body so it's not inside the fixed header (fixes blank menu when scrolled)
 	var navToggle = document.querySelector('.nav-toggle');
 	var nav = document.getElementById('nav');
+	var headerRight = document.querySelector('.header-right');
+	function closeNav() {
+		nav.classList.remove('is-open');
+		navToggle && navToggle.setAttribute('aria-expanded', 'false');
+		header && header.classList.remove('menu-open');
+		document.body.style.overflow = '';
+		if (nav.classList.contains('nav-portal') && headerRight) {
+			headerRight.appendChild(nav);
+			nav.classList.remove('nav-portal');
+		}
+	}
 	if (navToggle && nav) {
 		navToggle.addEventListener('click', function () {
 			var open = nav.classList.toggle('is-open');
 			navToggle.setAttribute('aria-expanded', open);
 			header && header.classList.toggle('menu-open', open);
 			document.body.style.overflow = open ? 'hidden' : '';
+			if (open && headerRight && window.innerWidth <= 768) {
+				document.body.appendChild(nav);
+				nav.classList.add('nav-portal');
+			} else if (!open) {
+				closeNav();
+			}
 		});
 		nav.querySelectorAll('a').forEach(function (link) {
 			link.addEventListener('click', function () {
-				nav.classList.remove('is-open');
-				navToggle && navToggle.setAttribute('aria-expanded', 'false');
-				header && header.classList.remove('menu-open');
-				document.body.style.overflow = '';
+				closeNav();
 			});
 		});
+		var navClose = nav.querySelector('.nav-close');
+		if (navClose) {
+			navClose.addEventListener('click', function () {
+				closeNav();
+			});
+		}
 	}
 
 	// ----- Certifications fade slider (vanilla JS, offset start per track) -----
