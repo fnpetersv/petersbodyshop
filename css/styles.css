@@ -283,6 +283,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 	position: relative;
 	width: 100%;
 	max-width: none;
+	min-width: 0;
 	aspect-ratio: 3 / 1;
 	min-height: 100px;
 }
@@ -1367,8 +1368,12 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 /* ----- Responsive ----- */
-@media (max-width: 992px) {
+/* Cert logos: 4 columns only when there is room; 2×2 from ~tablet to mobile */
+@media (max-width: 1250px) {
 	.cert-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 992px) {
 	.our-story__grid { grid-template-columns: 1fr; }
 	.our-story__image-wrap { order: -1; }
 	.cta-inner { flex-direction: column; text-align: center; }
