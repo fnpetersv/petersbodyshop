@@ -163,7 +163,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 .nav-list li.active a::after { transform: scaleX(1); }
 .nav-list a:hover { color: rgba(255, 255, 255, 0.95); }
 .nav-list li.active a { color: var(--color-white); }
-.site-header.is-sticky .nav-list a:hover { color: var(--color-primary); }
 
 /* Phone block – far right */
 .header-contact {
