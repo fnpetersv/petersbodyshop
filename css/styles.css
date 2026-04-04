@@ -232,7 +232,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 	margin: 0;
 	font-family: var(--font-heading);
 	font-weight: 700;
-	font-size: clamp(1.28rem, 4.5vw, 2.35rem);
+	font-size: clamp(1.48rem, 5.5vw, 2.75rem);
 	line-height: 1.2;
 	letter-spacing: 0.06em;
 	text-align: center;
