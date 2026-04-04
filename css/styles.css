@@ -879,6 +879,12 @@ ul { list-style: none; margin: 0; padding: 0; }
 	cursor: pointer;
 	box-sizing: border-box;
 }
+.estimate-form__file::file-selector-button {
+	margin-left: 5px;
+}
+.estimate-form__file::-webkit-file-upload-button {
+	margin-left: 5px;
+}
 .estimate-form__file:focus {
 	outline: none;
 	border-color: rgb(0, 121, 170);
