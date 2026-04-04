@@ -193,22 +193,22 @@
 		}
 	}
 
-	// ----- Careers page: form submit -----
+	// ----- Careers page: FormSubmit.co – set redirect URL and show success when returning -----
 	var careersForm = document.getElementById('careers-form');
 	if (careersForm) {
 		var careersError = document.getElementById('careers-error');
 		var careersSuccess = document.getElementById('careers-success');
-		careersForm.addEventListener('submit', function (e) {
-			if (!careersForm.action || careersForm.action === '' || careersForm.getAttribute('action') === '') {
-				e.preventDefault();
-				if (careersError) careersError.hidden = true;
-				if (careersSuccess) careersSuccess.hidden = false;
-				careersForm.reset();
-			} else {
-				if (careersError) careersError.hidden = true;
-				if (careersSuccess) careersSuccess.hidden = true;
+		var careersNext = document.getElementById('careers-form-next');
+		if (careersNext && window.location) {
+			careersNext.value = window.location.href.split('?')[0] + '?submitted=1';
+		}
+		if (window.location && window.location.search.indexOf('submitted=1') !== -1) {
+			if (careersError) careersError.hidden = true;
+			if (careersSuccess) careersSuccess.hidden = false;
+			if (window.history && window.history.replaceState) {
+				window.history.replaceState({}, '', window.location.pathname);
 			}
-		});
+		}
 	}
 
 	// ----- Contact page: FormSubmit.co – set redirect URL and show success when returning -----
