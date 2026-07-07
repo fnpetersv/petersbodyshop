@@ -69,7 +69,7 @@
 		if (!track) return;
 		var slides = [].slice.call(track.querySelectorAll('.cert-fade-slider__slide'));
 		if (slides.length === 0) return;
-		var count = Math.min(9, slides.length);
+		var count = Math.min(10, slides.length);
 		slides = slides.slice(0, count);
 		var offset = Math.max(1, Math.floor(slides.length / certSliders.length));
 		var current = (trackIndex * offset) % slides.length;
