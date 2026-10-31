@@ -1,4 +1,14 @@
 # ----------------------------------------------------
+# Block access to .git and other hidden/sensitive paths
+# ----------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^\.git(/|$) - [F,L]
+</IfModule>
+
+RedirectMatch 404 (?i)\.git
+
+# ----------------------------------------------------
 # Enable long-term caching for static assets
 # ----------------------------------------------------
 <IfModule mod_expires.c>
