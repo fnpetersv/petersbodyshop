@@ -22,9 +22,9 @@ RedirectMatch 404 (?i)\.git
     ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
 
-    # CSS & JS (cache for 1 month)
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
+    # CSS & JS (short cache so malware cleanup and script updates take effect)
+    ExpiresByType text/css "access plus 1 hour"
+    ExpiresByType application/javascript "access plus 1 hour"
 
     # Fonts (cache for 1 year)
     ExpiresByType font/woff2 "access plus 1 year"
@@ -32,8 +32,12 @@ RedirectMatch 404 (?i)\.git
 
 # Fallback cache-control header
 <IfModule mod_headers.c>
-    <FilesMatch "\.(js|css|png|jpg|jpeg|gif|webp|avif|svg|woff2)$">
+    <FilesMatch "\.(png|jpg|jpeg|gif|webp|avif|svg|woff2)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
+    <FilesMatch "\.(js|css)$">
+        Header set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+    Header set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; form-action https://formsubmit.co; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;"
 </IfModule>
 

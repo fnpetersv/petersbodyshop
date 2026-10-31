@@ -1,3 +1,4 @@
+/* PBS site script — if this file starts with obfuscated a0_0x / _0x code, it has been infected again. */
 (function () {
 	'use strict';
 
